@@ -101,14 +101,10 @@ public class glass_maps extends FragmentActivity {
                 .whereEqualTo("type", "AirQual")
                 .findInBackground(new FindCallback<ParseObject>() {
                     public void done(List<ParseObject> spots, ParseException e) {
-                        //Toast.makeText(getApplicationContext(), "asdfkljas;df", Toast.LENGTH_SHORT).show();
                         if (e == null) {
                             for (int i = 0; i < spots.size(); i++) {
                                 longitudeArray[i] = spots.get(i).getDouble("longitude");
                                 latitudeArray[i] = spots.get(i).getDouble("latitude");
-                                //longitudeArray[i] = 1234.4321;
-                                //latitudeArray[i] = 4321.1234;
-                                //Toast.makeText(getApplicationContext(), String.valueOf(longitudeArray[i]), Toast.LENGTH_LONG).show();
                                 x++;
                             }
                             makeMarkers();
@@ -117,8 +113,23 @@ public class glass_maps extends FragmentActivity {
                         }
                     }
                 });
+
+
+
     }
 
+
+    public void makeMarkers() {
+        for (int i = 0; i < longitudeArray.length; i++) {
+            // Set markers
+            mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitudeArray[i], longitudeArray[i]))
+                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.pinit_resized))
+                    .title("Glass recycling bin")
+                    .draggable(false));
+        }
+        //Toast.makeText(getApplicationContext(), String.valueOf(x), Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onResume() {
@@ -172,6 +183,13 @@ public class glass_maps extends FragmentActivity {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()), 16.0f));
-
+        if (drawToMap) {
+            CircleOptions circleOptions = new CircleOptions()
+                    .center(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()))
+                    .radius(1) // In meters
+                    .color(MainActivity.color);
+            Circle circle = mMap.addCircle(circleOptions);
+            drawToMap = false;
+        }
     }
 }

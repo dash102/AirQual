@@ -34,7 +34,8 @@ public class MainActivity extends Activity {
     byte buffer[];
     int bufferPosition;
     boolean stopThread;
-    String color;
+    String color = "N/A";
+    boolean drawToMap = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,21 +188,21 @@ public class MainActivity extends Activity {
         }
         if (ToArduino.current_quality == 0) {
             textView.append("Bad air quality! Take action now!");
-            color = "red";
+            color = "RED";
         }
         else if (ToArduino.current_quality == 1) {
             textView.append("Bad air quality. Monitor air quality and take caution.");
-            color = "orange";
+            color = "ORANGE";
         }
         else if (ToArduino.current_quality == 2) {
             textView.append("Medium air quality.");
-            color = "yellow";
+            color = "YELLOW";
         }
         else {
             textView.append("Fresh air.");
-            color = "green";
+            color = "GREEN";
         }
-
+        drawToMap = true;
     }
 
     public void onClickStop(View view) throws IOException {
