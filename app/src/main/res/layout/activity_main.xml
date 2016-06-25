@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Begin"
+        android:id="@+id/buttonStart"
+        android:onClick="onClickStart"
+        android:textSize="20dp"
+        android:background="#7de388"
+        android:padding="5dp"
+        android:layout_alignTop="@+id/buttonClear"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:id="@+id/buttonSend"
+        android:onClick="onClickSend"
+        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:background="#7de388"
+        android:padding="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_alignTop="@+id/buttonStart"
+        android:layout_toRightOf="@+id/buttonStart" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="20dp"
+        android:background="#FFFFFF"
+        android:padding="5dp"
+        android:layout_below="@+id/buttonStart"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="56dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:id="@+id/buttonStop"
+        android:onClick="onClickStop"
+        android:textSize="20dp"
+        android:background="#7de388"
+        android:padding="5dp"
+        android:layout_alignTop="@+id/buttonClear"
+        android:layout_toLeftOf="@+id/seeMap"
+        android:layout_marginRight="18dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:id="@+id/buttonClear"
+        android:onClick="onClickClear"
+        android:textSize="20dp"
+        android:layout_marginTop="130dp"
+        android:background="#7de388"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/buttonStop"
+        android:layout_marginRight="18dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See Map!"
+        android:id="@+id/seeMap"
+        android:onClick="onClickClear"
+        android:textSize="20dp"
+        android:background="#7de388"
+        android:padding="5dp"
+        android:layout_alignTop="@+id/buttonStop"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>
